@@ -13,7 +13,10 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.5.1
+  flutter_svg: ^2.0.10+1
   go_router: ^14.1.4
+  google_fonts: ^6.2.1
+  vector_graphics: ^1.1.11+1
 
 dev_dependencies:
   flutter_test:
@@ -22,3 +25,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/icons/
+    - assets/
