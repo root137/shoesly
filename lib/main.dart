@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shoesly/firebase_options.dart';
 import 'package:shoesly/shoesly_app.dart';
 
@@ -9,6 +10,8 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(
-    const ShoeslyApp(),
+    const ProviderScope(
+      child: ShoeslyApp(),
+    ),
   );
 }
