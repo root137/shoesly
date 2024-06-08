@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Adidas",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/shoesly-8d876.appspot.com/o/brands%2Fadidas.svg?alt=media&token=4709ea0f-acff-4eae-992a-6cdbfe7717f2"
+  },
+  {
+    "name": "Jordan",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/shoesly-8d876.appspot.com/o/brands%2Fjordan.svg?alt=media&token=ecd5b797-57cd-4723-a3d5-7254d21c78a3"
+  },
+  {
+    "name": "Nike",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/shoesly-8d876.appspot.com/o/brands%2Fnike.svg?alt=media&token=5bec823b-7bee-4f25-ac51-4899c20073c4"
+  },
+  {
+    "name": "Puma",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/shoesly-8d876.appspot.com/o/brands%2Fpuma.svg?alt=media&token=8a54ff4e-b6cf-48b5-b520-39e6beab9de0"
+  },
+  {
+    "name": "Reebok",
+    "imageUrl": " https://firebasestorage.googleapis.com/v0/b/shoesly-8d876.appspot.com/o/brands%2Freebok.svg?alt=media&token=1b91a2ae-1246-437c-b7d4-651ebf619077"
+  },
+  {
+    "name": "Vans",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/shoesly-8d876.appspot.com/o/brands%2Fvans.svg?alt=media&token=398c79d9-1625-40cd-9e95-ad6ca415a060"
+  }
+]

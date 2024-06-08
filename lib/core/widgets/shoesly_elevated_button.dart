@@ -2,15 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shoesly/core/themes/app_colors.dart';
 
 class ShoeslyElevatedButton extends StatelessWidget {
-  final String text;
-  final Color? backgroundColor;
-  final Color? foregroundColor;
-  final double? height;
-  final double? width;
-  final VoidCallback onPressed;
-  final bool? isLoading;
-  final Widget? icon;
-
   const ShoeslyElevatedButton({
     super.key,
     required this.text,
@@ -22,6 +13,17 @@ class ShoeslyElevatedButton extends StatelessWidget {
     this.isLoading = false,
     this.icon,
   });
+
+  final String text;
+  final Color? backgroundColor;
+  final Color? foregroundColor;
+
+  /// TODO: Provide height and width by parent
+  final double? height;
+  final double? width;
+  final VoidCallback? onPressed;
+  final bool? isLoading;
+  final Widget? icon;
 
   @override
   Widget build(BuildContext context) {
