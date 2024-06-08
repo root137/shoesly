@@ -9,6 +9,7 @@ class ShoeslyElevatedButton extends StatelessWidget {
   final double? width;
   final VoidCallback onPressed;
   final bool? isLoading;
+  final Widget? icon;
 
   const ShoeslyElevatedButton({
     super.key,
@@ -19,6 +20,7 @@ class ShoeslyElevatedButton extends StatelessWidget {
     this.height = 50,
     this.width = double.infinity,
     this.isLoading = false,
+    this.icon,
   });
 
   @override
@@ -29,11 +31,18 @@ class ShoeslyElevatedButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         child: (!isLoading!)
-            ? Text(
-                text.toUpperCase(),
-                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      color: foregroundColor ?? COLOR_WHITE,
-                    ),
+            ? Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (icon != null) icon!,
+                  Text(
+                    text.toUpperCase(),
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                          color: foregroundColor ?? COLOR_WHITE,
+                        ),
+                  ),
+                ],
               )
             : SizedBox(
                 height: 16,

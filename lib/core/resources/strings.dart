@@ -42,5 +42,15 @@ const String s_orderSummary = "Order Summary";
 const String s_information = "Information";
 const String paymentMethod = "Payment Method";
 const String s_location = "Location";
-const String s_orderDetails = "Order Details";
+const String s_orderDetails = "Order Detail";
 const String s_paymentMethod = "Payment Method";
+const String s_payment = "Payment";
+const String s_paymentDetail = "Payment Detail";
+const String s_subTotal = "Sub Total";
+const String s_shipping = "Shipping";
+const String s_totalOrder = "Total Order";
+
+//***************  *****************//
+const String s_goToHome = "Go to Home";
+const String s_oops = "Oops!";
+const String s_404NotFound = "404 Not Found";

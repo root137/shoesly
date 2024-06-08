@@ -22,6 +22,7 @@ class ShoeslyAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       elevation: 0,
       leading: leadingIcon!
           ? ShoeslyIconButton(

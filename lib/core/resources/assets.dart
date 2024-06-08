@@ -13,3 +13,4 @@ const String a_minus_circle = '$icons/minus_circle.svg.vec';
 const String a_tick_circle_filled = '$icons/tick_circle_filled.svg.vec';
 const String a_tick_circle = '$icons/tick_circle.svg.vec';
 const String a_trash = '$icons/trash.svg.vec';
+const String a_error_404 = '$icons/error_404.svg.vec';

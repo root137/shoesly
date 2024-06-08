@@ -10,7 +10,7 @@ class ShoeslyTheme {
     scaffoldBackgroundColor: Colors.white,
     fontFamily: GoogleFonts.inter().fontFamily,
     appBarTheme: const AppBarTheme(
-      color: Colors.white,
+      backgroundColor: COLOR_WHITE,
       elevation: 0,
       iconTheme: IconThemeData(color: Colors.black),
     ),
@@ -43,7 +43,7 @@ class ShoeslyTheme {
       headlineSmall: GoogleFonts.inter(
         color: COLOR_PRIMARY,
         fontSize: 12,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w600,
       ),
       titleMedium: GoogleFonts.inter(
         color: COLOR_PRIMARY,
@@ -68,7 +68,7 @@ class ShoeslyTheme {
       bodySmall: GoogleFonts.inter(
         color: COLOR_PRIMARY,
         fontSize: 12,
-        fontWeight: FontWeight.normal,
+        fontWeight: FontWeight.w300,
       ),
     ),
     colorScheme: ColorScheme.fromSwatch().copyWith(
@@ -105,6 +105,14 @@ class ShoeslyTheme {
     dividerTheme: const DividerThemeData(
       color: COLOR_PRIMARY_100,
       thickness: 1,
+    ),
+    bottomSheetTheme: const BottomSheetThemeData(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(12),
+          topRight: Radius.circular(12),
+        ),
+      ),
     ),
   );
 }
