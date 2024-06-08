@@ -21,6 +21,8 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Product {
   String get id => throw _privateConstructorUsedError;
+  String get brandId => throw _privateConstructorUsedError;
+  String get reviewId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
   List<String> get imageUrls => throw _privateConstructorUsedError;
@@ -43,6 +45,8 @@ abstract class $ProductCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
+      String brandId,
+      String reviewId,
       String name,
       double price,
       List<String> imageUrls,
@@ -68,6 +72,8 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   @override
   $Res call({
     Object? id = null,
+    Object? brandId = null,
+    Object? reviewId = null,
     Object? name = null,
     Object? price = null,
     Object? imageUrls = null,
@@ -82,6 +88,14 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      brandId: null == brandId
+          ? _value.brandId
+          : brandId // ignore: cast_nullable_to_non_nullable
+              as String,
+      reviewId: null == reviewId
+          ? _value.reviewId
+          : reviewId // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
           ? _value.name
@@ -132,6 +146,8 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
+      String brandId,
+      String reviewId,
       String name,
       double price,
       List<String> imageUrls,
@@ -155,6 +171,8 @@ class __$$ProductImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? brandId = null,
+    Object? reviewId = null,
     Object? name = null,
     Object? price = null,
     Object? imageUrls = null,
@@ -169,6 +187,14 @@ class __$$ProductImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      brandId: null == brandId
+          ? _value.brandId
+          : brandId // ignore: cast_nullable_to_non_nullable
+              as String,
+      reviewId: null == reviewId
+          ? _value.reviewId
+          : reviewId // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
           ? _value.name
@@ -215,6 +241,8 @@ class __$$ProductImplCopyWithImpl<$Res>
 class _$ProductImpl implements _Product {
   const _$ProductImpl(
       {required this.id,
+      required this.brandId,
+      required this.reviewId,
       required this.name,
       required this.price,
       required final List<String> imageUrls,
@@ -233,6 +261,10 @@ class _$ProductImpl implements _Product {
 
   @override
   final String id;
+  @override
+  final String brandId;
+  @override
+  final String reviewId;
   @override
   final String name;
   @override
@@ -272,7 +304,7 @@ class _$ProductImpl implements _Product {
 
   @override
   String toString() {
-    return 'Product(id: $id, name: $name, price: $price, imageUrls: $imageUrls, sizes: $sizes, description: $description, colors: $colors, gender: $gender, averageRating: $averageRating, reviewCount: $reviewCount)';
+    return 'Product(id: $id, brandId: $brandId, reviewId: $reviewId, name: $name, price: $price, imageUrls: $imageUrls, sizes: $sizes, description: $description, colors: $colors, gender: $gender, averageRating: $averageRating, reviewCount: $reviewCount)';
   }
 
   @override
@@ -281,6 +313,9 @@ class _$ProductImpl implements _Product {
         (other.runtimeType == runtimeType &&
             other is _$ProductImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.brandId, brandId) || other.brandId == brandId) &&
+            (identical(other.reviewId, reviewId) ||
+                other.reviewId == reviewId) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.price, price) || other.price == price) &&
             const DeepCollectionEquality()
@@ -301,6 +336,8 @@ class _$ProductImpl implements _Product {
   int get hashCode => Object.hash(
       runtimeType,
       id,
+      brandId,
+      reviewId,
       name,
       price,
       const DeepCollectionEquality().hash(_imageUrls),
@@ -328,6 +365,8 @@ class _$ProductImpl implements _Product {
 abstract class _Product implements Product {
   const factory _Product(
       {required final String id,
+      required final String brandId,
+      required final String reviewId,
       required final String name,
       required final double price,
       required final List<String> imageUrls,
@@ -342,6 +381,10 @@ abstract class _Product implements Product {
 
   @override
   String get id;
+  @override
+  String get brandId;
+  @override
+  String get reviewId;
   @override
   String get name;
   @override

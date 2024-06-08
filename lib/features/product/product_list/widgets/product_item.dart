@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shoesly/core/themes/app_colors.dart';
+import 'package:shoesly/features/brand/brands_list_widget.dart';
 
 class ProductItem extends ConsumerWidget {
   const ProductItem({super.key});
@@ -25,27 +25,28 @@ class ProductItem extends ConsumerWidget {
               Radius.circular(24),
             ),
           ),
-          child: Column(
+          child: const Column(
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Align(
-                alignment: Alignment.topLeft,
-                child: SvgPicture.asset(
-                  'assets/nike.svg',
-                  height: 24,
-                  width: 24,
-                ),
-              ),
-              const SizedBox(
+              BrandsListWidget(),
+              // Align(
+              //   alignment: Alignment.topLeft,
+              //   child: SvgPicture.asset(
+              //     'assets/nike.svg',
+              //     height: 24,
+              //     width: 24,
+              //   ),
+              // ),
+              SizedBox(
                 height: 8,
               ),
-              Image.asset(
-                'assets/aj1.png',
-                height: 85,
-                width: 120,
-                fit: BoxFit.contain,
-              ),
+              // Image.asset(
+              //   'assets/aj1_tiedye.png',
+              //   height: 85,
+              //   width: 120,
+              //   fit: BoxFit.contain,
+              // ),
             ],
           ),
         ),

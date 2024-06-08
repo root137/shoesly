@@ -12,4 +12,6 @@ class Brand with _$Brand {
   }) = _Brand;
 
   factory Brand.fromJson(Map<String, dynamic> json) => _$BrandFromJson(json);
+
+  factory Brand.allBrand() => const Brand(id: '', name: 'All', imageUrl: '');
 }

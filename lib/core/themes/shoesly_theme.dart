@@ -8,64 +8,64 @@ class ShoeslyTheme {
     primaryColor: COLOR_PRIMARY,
     splashColor: COLOR_PRIMARY_100,
     scaffoldBackgroundColor: Colors.white,
-    fontFamily: GoogleFonts.inter().fontFamily,
+    fontFamily: GoogleFonts.titilliumWeb().fontFamily,
     appBarTheme: const AppBarTheme(
       backgroundColor: COLOR_WHITE,
       elevation: 0,
       iconTheme: IconThemeData(color: Colors.black),
     ),
-    textTheme: TextTheme(
-      displayLarge: GoogleFonts.inter(
+    textTheme: const TextTheme(
+      displayLarge: TextStyle(
         color: COLOR_PRIMARY,
         fontSize: 26,
         fontWeight: FontWeight.w600,
       ),
-      displayMedium: GoogleFonts.inter(
+      displayMedium: TextStyle(
         color: COLOR_PRIMARY,
         fontSize: 24,
         fontWeight: FontWeight.w600,
       ),
-      displaySmall: GoogleFonts.inter(
+      displaySmall: TextStyle(
         color: COLOR_PRIMARY,
         fontSize: 20,
         fontWeight: FontWeight.w600,
       ),
-      headlineLarge: GoogleFonts.inter(
+      headlineLarge: TextStyle(
         color: COLOR_PRIMARY,
         fontSize: 16,
         fontWeight: FontWeight.w600,
       ),
-      headlineMedium: GoogleFonts.inter(
+      headlineMedium: TextStyle(
         color: COLOR_PRIMARY,
         fontSize: 14,
         fontWeight: FontWeight.w500,
       ),
-      headlineSmall: GoogleFonts.inter(
+      headlineSmall: TextStyle(
         color: COLOR_PRIMARY,
         fontSize: 12,
         fontWeight: FontWeight.w600,
       ),
-      titleMedium: GoogleFonts.inter(
+      titleMedium: TextStyle(
         color: COLOR_PRIMARY,
         fontSize: 12,
         fontWeight: FontWeight.w600,
       ),
-      titleSmall: GoogleFonts.inter(
+      titleSmall: TextStyle(
         color: COLOR_PRIMARY,
         fontSize: 10,
         fontWeight: FontWeight.w500,
       ),
-      bodyLarge: GoogleFonts.inter(
+      bodyLarge: TextStyle(
         color: COLOR_PRIMARY,
         fontSize: 16,
         fontWeight: FontWeight.normal,
       ),
-      bodyMedium: GoogleFonts.inter(
+      bodyMedium: TextStyle(
         color: COLOR_PRIMARY,
         fontSize: 14,
         fontWeight: FontWeight.normal,
       ),
-      bodySmall: GoogleFonts.inter(
+      bodySmall: TextStyle(
         color: COLOR_PRIMARY,
         fontSize: 12,
         fontWeight: FontWeight.w300,

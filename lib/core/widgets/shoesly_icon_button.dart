@@ -4,12 +4,6 @@ import 'package:shoesly/core/themes/app_colors.dart';
 import 'package:vector_graphics/vector_graphics_compat.dart';
 
 class ShoeslyIconButton extends StatelessWidget {
-  final String assetImagePath;
-  final double? size;
-  final Color? iconColor;
-  final BoxFit? fit;
-  final VoidCallback? onPressed;
-
   const ShoeslyIconButton({
     super.key,
     required this.assetImagePath,
@@ -18,6 +12,12 @@ class ShoeslyIconButton extends StatelessWidget {
     this.onPressed,
     this.fit = BoxFit.contain,
   });
+
+  final String assetImagePath;
+  final double? size;
+  final Color? iconColor;
+  final BoxFit? fit;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {

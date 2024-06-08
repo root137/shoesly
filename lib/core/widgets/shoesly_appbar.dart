@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shoesly/core/resources/assets.dart';
+import 'package:shoesly/core/router/routes.dart';
 import 'package:shoesly/core/widgets/shoesly_icon_button.dart';
 
 class ShoeslyAppbar extends StatelessWidget implements PreferredSizeWidget {
   const ShoeslyAppbar({
     super.key,
     this.leadingIcon = true,
+    this.centreTitle = false,
     this.title,
     this.actions,
     this.titleTextStyle,
-    this.centreTitle = false,
   });
 
   final bool? leadingIcon;
@@ -24,14 +25,14 @@ class ShoeslyAppbar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       elevation: 0,
-      leading: leadingIcon!
+      leading: leadingIcon != null
           ? ShoeslyIconButton(
               assetImagePath: a_back_button,
               onPressed: () {
                 context.canPop()
                     ? context.pop()
-                    : context.go(
-                        '/product-list',
+                    : context.goNamed(
+                        Routes.productListPage.name,
                       );
               },
             )

@@ -7,6 +7,8 @@ part 'product.g.dart';
 class Product with _$Product {
   const factory Product({
     required String id,
+    required String brandId,
+    required String reviewId,
     required String name,
     required double price,
     required List<String> imageUrls,

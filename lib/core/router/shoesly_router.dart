@@ -15,7 +15,7 @@ final rootNavigatorKey = GlobalKey<NavigatorState>();
 final goRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     navigatorKey: rootNavigatorKey,
-    initialLocation: Routes.orderPage.path,
+    initialLocation: Routes.productListPage.path,
     debugLogDiagnostics: true,
     routes: [
       GoRoute(
