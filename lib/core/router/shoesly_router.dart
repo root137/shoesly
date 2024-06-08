@@ -7,7 +7,7 @@ import 'package:shoesly/features/cart/cart_page.dart';
 import 'package:shoesly/features/filter/filter_page.dart';
 import 'package:shoesly/features/order/order_summary_page.dart';
 import 'package:shoesly/features/product/product_detail/product_detail_page.dart';
-import 'package:shoesly/features/product/product_list/product_list_page.dart';
+import 'package:shoesly/features/product/features/product_list/product_list_page.dart';
 import 'package:shoesly/features/review/review_page.dart';
 
 final rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -16,7 +16,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     navigatorKey: rootNavigatorKey,
     initialLocation: Routes.productListPage.path,
-    debugLogDiagnostics: true,
+    // debugLogDiagnostics: true,
     routes: [
       GoRoute(
         path: Routes.productListPage.path,

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shoesly/features/brand/model/brand.dart';
 import 'package:shoesly/features/brand/service/brand_service.dart';
+import 'package:collection/collection.dart';
 
 final brandControllerProvider =
     StateNotifierProvider<BrandController, AsyncValue<List<Brand>>>((ref) {
@@ -25,5 +26,10 @@ class BrandController extends StateNotifier<AsyncValue<List<Brand>>> {
     } catch (error) {
       state = AsyncError(error, StackTrace.current);
     }
+  }
+
+  Brand? getBrandById(String id) {
+    final List<Brand>? brands = state.value;
+    return brands?.firstWhereOrNull((brand) => brand.id == id);
   }
 }
