@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shoesly/core/themes/app_colors.dart';
 import 'package:shoesly/features/brand/controller/brand_controller.dart';
+import 'package:shoesly/features/brand/controller/brand_state.dart';
 import 'package:shoesly/features/brand/model/brand.dart';
 
 class BrandsListWidget extends ConsumerStatefulWidget {
@@ -14,36 +15,36 @@ class BrandsListWidget extends ConsumerStatefulWidget {
 }
 
 class _BrandsListWidgetState extends ConsumerState<BrandsListWidget> {
-  int _selectedBrandIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     final asyncBrands = ref.watch(brandControllerProvider);
     return asyncBrands.when(
-        data: (brands) {
-          return _buildBrandList(brands);
+        data: (brandState) {
+          return _buildBrandList(brandState);
         },
         error: (error, _) => Text('Error: $error'),
         loading: () => const CircularProgressIndicator.adaptive());
   }
 
-  SizedBox _buildBrandList(List<Brand> brands) {
+  SizedBox _buildBrandList(BrandState brandState) {
+    final List<Brand> allBrands = brandState.allBrands;
     return SizedBox(
       height: 44,
       child: ListView.separated(
         padding: const EdgeInsets.only(left: 30, right: 30, top: 24),
         itemBuilder: (_, index) {
-          final bool brandSelected = index == _selectedBrandIndex;
+          final bool brandSelected =
+              allBrands[index].id == brandState.selectedBrandId;
           return InkWell(
             onTap: () {
-              setState(() {
-                _selectedBrandIndex = index;
-              });
+              ref
+                  .read(brandControllerProvider.notifier)
+                  .updateBrandIndexByBrandId(allBrands[index].id);
               widget.onBrandSelected
-                  ?.call(index == 0 ? null : brands[index].id);
+                  ?.call(index == 0 ? null : allBrands[index].id);
             },
             child: Text(
-              brands[index].name,
+              allBrands[index].name,
               style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                     color: brandSelected ? COLOR_PRIMARY : COLOR_PRIMARY_300,
                   ),
@@ -51,7 +52,7 @@ class _BrandsListWidgetState extends ConsumerState<BrandsListWidget> {
           );
         },
         separatorBuilder: (_, __) => const SizedBox(width: 20),
-        itemCount: brands.length,
+        itemCount: allBrands.length,
         scrollDirection: Axis.horizontal,
       ),
     );
