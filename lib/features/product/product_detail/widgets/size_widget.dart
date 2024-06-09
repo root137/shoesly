@@ -27,6 +27,7 @@ class _SizeWidgetState extends State<SizeWidget> {
       child: Container(
         height: 40,
         width: 40,
+        margin: const EdgeInsets.only(right: 10),
         decoration: BoxDecoration(
           border: Border.fromBorderSide(
             BorderSide(

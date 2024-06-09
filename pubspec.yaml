@@ -10,6 +10,7 @@ dependencies:
   # Firebase related
   cloud_firestore: ^4.17.5
   collection: ^1.18.0
+  dots_indicator: ^3.0.0
   firebase_auth: ^4.20.0
   firebase_core: ^2.32.0
   firebase_storage: ^11.7.7

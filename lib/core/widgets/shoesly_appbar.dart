@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shoesly/core/resources/assets.dart';
 import 'package:shoesly/core/router/routes.dart';
+import 'package:shoesly/core/themes/app_colors.dart';
 import 'package:shoesly/core/widgets/shoesly_icon_button.dart';
 
 class ShoeslyAppbar extends StatelessWidget implements PreferredSizeWidget {
@@ -9,6 +10,7 @@ class ShoeslyAppbar extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     this.leadingIcon = true,
     this.centreTitle = false,
+    this.backgroundColor = COLOR_WHITE,
     this.title,
     this.actions,
     this.titleTextStyle,
@@ -19,14 +21,15 @@ class ShoeslyAppbar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? actions;
   final TextStyle? titleTextStyle;
   final bool centreTitle;
+  final Color backgroundColor;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      backgroundColor: backgroundColor,
       surfaceTintColor: Colors.transparent,
       elevation: 0,
-      leading: leadingIcon != null
+      leading: leadingIcon!
           ? ShoeslyIconButton(
               assetImagePath: a_back_button,
               onPressed: () {
