@@ -6,6 +6,7 @@ import 'package:shoesly/core/widgets/not_found_page.dart';
 import 'package:shoesly/features/cart/cart_page.dart';
 import 'package:shoesly/features/filter/filter_page.dart';
 import 'package:shoesly/features/order/order_summary_page.dart';
+import 'package:shoesly/features/product/core/model/product.dart';
 import 'package:shoesly/features/product/product_detail/product_detail_page.dart';
 import 'package:shoesly/features/product/features/product_list/product_list_page.dart';
 import 'package:shoesly/features/review/review_page.dart';
@@ -26,7 +27,12 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: Routes.productDetailPage.path,
         name: Routes.productDetailPage.name,
-        builder: (context, state) => const ProductDetailPage(),
+        builder: (context, state) {
+          final product = state.extra as Product;
+          return ProductDetailPage(
+            product: product,
+          );
+        },
       ),
       GoRoute(
         path: Routes.filterPage.path,

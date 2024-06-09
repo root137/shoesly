@@ -40,7 +40,11 @@ class _ProductListPageState extends ConsumerState<ProductListPage> {
         centreTitle: false,
         actions: ShoeslyIconButton(
           assetImagePath: a_cart,
-          onPressed: () {},
+          onPressed: () {
+            context.pushNamed(
+              Routes.cartPage.name,
+            );
+          },
         ),
       ),
       body: Column(
@@ -55,7 +59,8 @@ class _ProductListPageState extends ConsumerState<ProductListPage> {
           ),
         ],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
       floatingActionButton: ShoeslyElevatedButton(
         height: 40,
         width: 150,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:shoesly/core/router/routes.dart';
 import 'package:shoesly/features/product/features/product_list/controller/product_list_controller.dart';
 import 'package:shoesly/features/product/features/product_list/widgets/product_item.dart';
 
@@ -30,7 +32,12 @@ class ProductListWidget extends ConsumerWidget {
             itemBuilder: (_, index) {
               return ProductItem(
                 product: products[index],
-                onPressed: () {},
+                onPressed: () {
+                  context.goNamed(
+                    Routes.productDetailPage.name,
+                    extra: products[index],
+                  );
+                },
               );
             },
           );

@@ -1,25 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shoesly/core/resources/assets.dart';
 import 'package:shoesly/core/resources/strings.dart';
+import 'package:shoesly/core/router/routes.dart';
 import 'package:shoesly/core/themes/app_colors.dart';
 import 'package:shoesly/core/widgets/shoesly_appbar.dart';
 import 'package:shoesly/core/widgets/shoesly_elevated_button.dart';
 import 'package:shoesly/core/widgets/shoesly_icon_button.dart';
+import 'package:shoesly/features/product/core/model/product.dart';
 import 'package:shoesly/features/product/product_detail/widgets/add_to_cart_bottom_sheet.dart';
+import 'package:shoesly/features/product/product_detail/widgets/product_image_slider.dart';
 import 'package:shoesly/features/product/product_detail/widgets/size_widget.dart';
 
 class ProductDetailPage extends ConsumerWidget {
-  const ProductDetailPage({super.key});
+  const ProductDetailPage({
+    super.key,
+    required this.product,
+  });
+
+  final Product product;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    debugPrint('ProductDetailPage: ${product.name}');
     return Scaffold(
       appBar: ShoeslyAppbar(
+        backgroundColor: COLOR_PRIMARY_100.withOpacity(0.4),
         actions: ShoeslyIconButton(
           assetImagePath: a_cart,
-          onPressed: () {},
+          onPressed: () {
+            context.pushNamed(
+              Routes.cartPage.name,
+            );
+          },
         ),
       ),
       body: ColoredBox(
@@ -33,13 +48,20 @@ class ProductDetailPage extends ConsumerWidget {
                 height: 315,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: COLOR_PRIMARY_100,
+                  color: COLOR_PRIMARY_200,
                   borderRadius: BorderRadius.circular(16),
                 ),
+                child: ProductImageSlider(
+                  imageUrls: product.imageUrls,
+                  colors: product.colors,
+                  productId: product.id,
+                ),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(
+                height: 30,
+              ),
               Text(
-                'Product Name',
+                product.name,
                 style: Theme.of(context).textTheme.displaySmall?.copyWith(
                   shadows: [
                     BoxShadow(
@@ -54,7 +76,7 @@ class ProductDetailPage extends ConsumerWidget {
               Row(
                 children: [
                   RatingBarIndicator(
-                    unratedColor: COLOR_PRIMARY_100,
+                    unratedColor: COLOR_PRIMARY_200,
                     itemBuilder: (context, index) {
                       return const Icon(
                         Icons.star_rounded,
@@ -62,23 +84,25 @@ class ProductDetailPage extends ConsumerWidget {
                       );
                     },
                     itemSize: 20,
-                    rating: 4.5,
+                    rating: product.averageRating.toDouble(),
                   ),
                   const SizedBox(
                     width: 5,
                   ),
                   Text(
-                    '4.5',
-                    style: Theme.of(context).textTheme.headlineMedium,
+                    product.averageRating.toString(),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodySmall
+                        ?.copyWith(fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(
-                    width: 5,
-                  ),
+                  const SizedBox(width: 5),
                   Text(
-                    '(${"10"} Reviews)',
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: COLOR_PRIMARY_300,
-                        ),
+                    '(${product.reviewCount} Reviews)',
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodySmall
+                        ?.copyWith(color: COLOR_PRIMARY_400),
                   ),
                 ],
               ),
@@ -87,18 +111,32 @@ class ProductDetailPage extends ConsumerWidget {
               ),
               Text(
                 s_size,
-                style: Theme.of(context).textTheme.headlineMedium,
+                style: Theme.of(context).textTheme.headlineLarge,
               ),
               const SizedBox(height: 10),
-              const SizeWidget(size: 20),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ...product.sizes.map(
+                      (size) {
+                        return SizeWidget(
+                          size: size,
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
               const SizedBox(height: 30),
               Text(
                 s_description,
-                style: Theme.of(context).textTheme.headlineMedium,
+                style: Theme.of(context).textTheme.headlineLarge,
               ),
               const SizedBox(height: 10),
               Text(
-                'Product Description',
+                product.description,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: COLOR_PRIMARY_400,
                     ),
@@ -138,7 +176,7 @@ class ProductDetailPage extends ConsumerWidget {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    '\$100',
+                    '\$${product.price}',
                     style: Theme.of(context).textTheme.headlineLarge,
                   ),
                 ],
