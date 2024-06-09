@@ -59,8 +59,7 @@ class _ProductListPageState extends ConsumerState<ProductListPage> {
           ),
         ],
       ),
-      floatingActionButtonLocation:
-          FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: ShoeslyElevatedButton(
         height: 40,
         width: 150,

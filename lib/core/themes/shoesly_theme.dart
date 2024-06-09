@@ -8,7 +8,7 @@ class ShoeslyTheme {
     primaryColor: COLOR_PRIMARY,
     splashColor: COLOR_PRIMARY_100,
     scaffoldBackgroundColor: Colors.white,
-    fontFamily: GoogleFonts.inter().fontFamily,
+    fontFamily: GoogleFonts.titilliumWeb().fontFamily,
     appBarTheme: const AppBarTheme(
       backgroundColor: COLOR_WHITE,
       elevation: 0,

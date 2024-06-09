@@ -24,7 +24,6 @@ class ProductDetailPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    debugPrint('ProductDetailPage: ${product.name}');
     return Scaffold(
       appBar: ShoeslyAppbar(
         backgroundColor: COLOR_PRIMARY_100.withOpacity(0.4),
@@ -65,7 +64,7 @@ class ProductDetailPage extends ConsumerWidget {
                 style: Theme.of(context).textTheme.displaySmall?.copyWith(
                   shadows: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.4),
+                      color: Colors.black.withOpacity(0.2),
                       offset: const Offset(0, 5),
                       blurRadius: 4,
                     ),
