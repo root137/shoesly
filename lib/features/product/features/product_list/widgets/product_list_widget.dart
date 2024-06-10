@@ -16,42 +16,46 @@ class ProductListWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final productListAsync = ref.watch(productControllerProvider);
     return productListAsync.when(
-        data: (products) {
-          if (products.isEmpty) {
-            return const Center(
-              child: Text('No Shoes Found'),
-            );
-          }
-          return RefreshIndicator(
-            onRefresh: () async {
-              ref
-                  .read(brandControllerProvider.notifier)
-                  .updateBrandIndexByBrandId('');
-              ref.read(productControllerProvider.notifier).fetchProducts(null);
-            },
-            child: GridView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
-              itemCount: products.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 15,
-                childAspectRatio: 0.67,
-              ),
-              itemBuilder: (_, index) {
-                return ProductItem(
-                  product: products[index],
-                  onPressed: () {
-                    context.pushNamed(
-                      Routes.productDetailPage.name,
-                      extra: products[index],
-                    );
-                  },
-                );
-              },
-            ),
+      data: (products) {
+        if (products.isEmpty) {
+          return const Center(
+            child: Text('No Shoes Found'),
           );
-        },
-        error: (error, __) => Text(error.toString()),
-        loading: () => const Center(child: CircularProgressIndicator()));
+        }
+        return RefreshIndicator(
+          onRefresh: () async {
+            ref
+                .read(brandControllerProvider.notifier)
+                .updateBrandIndexByBrandId('');
+            ref.read(productControllerProvider.notifier).fetchProducts(null);
+          },
+          child: GridView.builder(
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+            itemCount: products.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 15,
+              mainAxisSpacing: 30,
+              childAspectRatio: 0.67,
+            ),
+            itemBuilder: (_, index) {
+              return ProductItem(
+                product: products[index],
+                onPressed: () {
+                  context.pushNamed(
+                    Routes.productDetailPage.name,
+                    extra: products[index],
+                  );
+                },
+              );
+            },
+          ),
+        );
+      },
+      error: (error, __) => Text(error.toString()),
+      loading: () => const Center(
+        child: CircularProgressIndicator.adaptive(),
+      ),
+    );
   }
 }

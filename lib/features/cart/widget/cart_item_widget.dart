@@ -78,7 +78,7 @@ class _CartItemWidgetState extends ConsumerState<CartItemWidget> {
                   ),
                   height10,
                   Text(
-                    '${_cart.brandName} . ${_cart.productColor} . ${_cart.productSize}',
+                    '${_cart.brandName} . ${getColorNameFromCode(_cart.productColor)} . ${_cart.productSize}',
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: COLOR_PRIMARY_400,
                         ),
@@ -132,6 +132,31 @@ class _CartItemWidgetState extends ConsumerState<CartItemWidget> {
         _quantity--;
       });
       widget.onQuantityChanged?.call(-_cart.productPrice);
+    }
+  }
+
+  String getColorNameFromCode(String colorCode) {
+    // Convert the color code string to lowercase and remove leading '#'
+    colorCode = colorCode.toLowerCase().replaceAll('#', '');
+
+    // Match the color code with predefined colors and return their names
+    switch (colorCode) {
+      case '000000':
+        return 'Black';
+      case 'ffffff':
+        return 'White';
+      case '0000ff':
+        return 'Blue';
+      case '808080':
+        return 'Grey';
+      case 'ffff00':
+        return 'Yellow';
+      case '008800':
+        return 'Green';
+      case 'ff0000':
+        return 'Red';
+      default:
+        return 'Unknown';
     }
   }
 }
