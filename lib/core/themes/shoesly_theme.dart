@@ -63,12 +63,12 @@ class ShoeslyTheme {
       bodyMedium: TextStyle(
         color: COLOR_PRIMARY,
         fontSize: 14,
-        fontWeight: FontWeight.normal,
+        fontWeight: FontWeight.w300,
       ),
       bodySmall: TextStyle(
         color: COLOR_PRIMARY,
         fontSize: 12,
-        fontWeight: FontWeight.w300,
+        fontWeight: FontWeight.w200,
       ),
     ),
     colorScheme: ColorScheme.fromSwatch().copyWith(

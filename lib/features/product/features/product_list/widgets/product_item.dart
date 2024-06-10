@@ -24,7 +24,6 @@ class ProductItem extends ConsumerWidget {
       color: Colors.transparent,
       child: InkWell(
         onTap: onPressed,
-        splashColor: Colors.red,
         radius: 24,
         borderRadius: BorderRadius.circular(24),
         child: Column(

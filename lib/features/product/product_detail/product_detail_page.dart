@@ -209,7 +209,6 @@ class ProductDetailPage extends ConsumerWidget {
       builder: (context) {
         return AddToCartBottomSheet(
           productName: product.name,
-          // TODO: Provide selected image url, size and color
           productImageUrl: product.imageUrls.first,
           productSize: product.sizes.first,
           productColor: product.colors.first,

@@ -22,13 +22,19 @@ class _PriceRangeSelectorState extends ConsumerState<PriceRangeSelector> {
 
   @override
   Widget build(BuildContext context) {
+    const minValue = 0;
+    const maxValue = 600;
+    final style = Theme.of(context)
+        .textTheme
+        .headlineSmall
+        ?.copyWith(fontWeight: FontWeight.w600);
     return Column(
       children: [
         SizedBox(
           width: double.infinity,
           child: SfRangeSlider(
-            min: 0,
-            max: 600,
+            min: minValue,
+            max: maxValue,
             stepSize: 10,
             values: _values,
             interval: 100,
@@ -41,6 +47,22 @@ class _PriceRangeSelectorState extends ConsumerState<PriceRangeSelector> {
                 widget.onPriceRangeSelected?.call(startValue, endValue);
               });
             },
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                '\$$minValue',
+                style: style?.copyWith(color: Colors.grey),
+              ),
+              Text(
+                '\$$maxValue',
+                style: style,
+              ),
+            ],
           ),
         ),
       ],

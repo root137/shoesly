@@ -39,7 +39,7 @@ class _BrandWidgetState extends ConsumerState<BrandWidget> {
     final List<Brand> filteredBrands = allBrands
       ..removeWhere((element) => element.id == '');
     return ListView.separated(
-        padding: const EdgeInsets.symmetric(horizontal: 30),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         scrollDirection: Axis.horizontal,
         itemBuilder: (_, index) {
           bool selected =

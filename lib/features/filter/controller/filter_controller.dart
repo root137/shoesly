@@ -30,8 +30,8 @@ class FilterNotifier extends StateNotifier<FilterArgs> {
 
   bool anyFilterApplied() {
     return state.brandId != null ||
-        state.minPrice != null ||
-        state.maxPrice != null ||
+        state.minPrice != 30 ||
+        state.maxPrice != 300 ||
         state.sortBy != null ||
         state.sortByGender != null ||
         state.sortByColor != null;

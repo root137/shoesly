@@ -86,7 +86,7 @@ class _FilterPageState extends ConsumerState<FilterPage> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 30),
+                padding: const EdgeInsets.only(left: 16),
                 child: Text(
                   s_brands,
                   style: style,
@@ -107,7 +107,7 @@ class _FilterPageState extends ConsumerState<FilterPage> {
                 height: 30,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 30),
+                padding: const EdgeInsets.only(left: 16),
                 child: Text(
                   s_priceRange,
                   style: style,
@@ -125,7 +125,7 @@ class _FilterPageState extends ConsumerState<FilterPage> {
                 height: 30,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 30),
+                padding: const EdgeInsets.only(left: 16),
                 child: Text(
                   s_sortBy,
                   style: style,
@@ -140,9 +140,7 @@ class _FilterPageState extends ConsumerState<FilterPage> {
                       .map(
                         (e) => FilterChipWidget(
                           label: e.name,
-                          selectedValue: (value) {
-                            // TODO: Add sorting here
-                          },
+                          selectedValue: (value) {},
                         ),
                       )
                       .toList(),
@@ -152,7 +150,7 @@ class _FilterPageState extends ConsumerState<FilterPage> {
                 height: 30,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 30),
+                padding: const EdgeInsets.only(left: 16),
                 child: Text(
                   s_Gender,
                   style: style,
@@ -181,7 +179,7 @@ class _FilterPageState extends ConsumerState<FilterPage> {
                 height: 30,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 30),
+                padding: const EdgeInsets.only(left: 16),
                 child: Text(
                   s_color,
                   style: style,
@@ -189,7 +187,7 @@ class _FilterPageState extends ConsumerState<FilterPage> {
               ),
               height20,
               SingleChildScrollView(
-                padding: const EdgeInsets.only(left: 26),
+                padding: const EdgeInsets.only(left: 10),
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
@@ -222,7 +220,13 @@ class _FilterPageState extends ConsumerState<FilterPage> {
             Expanded(
               child: ShoeslyOutlinedButton(
                 text: s_reset,
-                onPressed: () {},
+                onPressed: () {
+                  ref.read(filterControllerProvider.notifier).clearFilter();
+                  ref
+                      .read(productControllerProvider.notifier)
+                      .fetchProducts(null);
+                  context.pop();
+                },
               ),
             ),
             const SizedBox(
