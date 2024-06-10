@@ -27,7 +27,11 @@ class CartController extends StateNotifier<AsyncValue<CartState>> {
             previousValue + element.productPrice * element.quantity,
       );
       state = AsyncValue.data(
-          CartState(cartItems: cartList, totalPrice: totalPrice));
+        CartState(
+          cartItems: cartList,
+          totalPrice: totalPrice,
+        ),
+      );
     } on CustomFirebaseException catch (error) {
       state = AsyncValue.error(error.message, StackTrace.current);
     } catch (error) {
