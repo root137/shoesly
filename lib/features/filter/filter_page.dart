@@ -29,6 +29,11 @@ enum SortByGenderEnum {
 
   final String gender;
   const SortByGenderEnum(this.gender);
+
+  // Get enum from string
+  static SortByGenderEnum fromString(String value) {
+    return SortByGenderEnum.values.firstWhere((e) => e.gender == value);
+  }
 }
 
 enum SortByColorEnum {
@@ -135,6 +140,9 @@ class _FilterPageState extends ConsumerState<FilterPage> {
                       .map(
                         (e) => FilterChipWidget(
                           label: e.name,
+                          selectedValue: (value) {
+                            // TODO: Add sorting here
+                          },
                         ),
                       )
                       .toList(),
@@ -158,6 +166,14 @@ class _FilterPageState extends ConsumerState<FilterPage> {
                     children: genderValues
                         .map((e) => FilterChipWidget(
                               label: e.gender,
+                              selectedValue: (value) {
+                                ref
+                                    .read(filterControllerProvider.notifier)
+                                    .updateFilterArgs(
+                                      sortByGender:
+                                          SortByGenderEnum.fromString(value),
+                                    );
+                              },
                             ))
                         .toList(),
                   )),
@@ -173,6 +189,7 @@ class _FilterPageState extends ConsumerState<FilterPage> {
               ),
               height20,
               SingleChildScrollView(
+                padding: const EdgeInsets.only(left: 26),
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   mainAxisSize: MainAxisSize.min,

@@ -55,8 +55,8 @@ class ProductService {
         query = query.where('price', isLessThanOrEqualTo: filterArgs.maxPrice);
       }
       if (filterArgs.sortByGender != null) {
-        query = query.where('gender',
-            isEqualTo: filterArgs.sortByGender!.gender.toLowerCase());
+        query =
+            query.where('gender', isEqualTo: filterArgs.sortByGender!.gender);
       }
       if (filterArgs.sortByColor != null) {
         query = query.where('colors', arrayContains: filterArgs.sortByColor);

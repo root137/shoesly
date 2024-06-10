@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shoesly/features/filter/controller/filter_controller.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
-class PriceRangeSelector extends StatefulWidget {
+class PriceRangeSelector extends ConsumerStatefulWidget {
   const PriceRangeSelector({
     super.key,
     this.onPriceRangeSelected,
@@ -10,11 +12,13 @@ class PriceRangeSelector extends StatefulWidget {
   final void Function(double startValue, double endValue)? onPriceRangeSelected;
 
   @override
-  State<PriceRangeSelector> createState() => _PriceRangeSelectorState();
+  ConsumerState<PriceRangeSelector> createState() => _PriceRangeSelectorState();
 }
 
-class _PriceRangeSelectorState extends State<PriceRangeSelector> {
-  SfRangeValues _values = const SfRangeValues(50.0, 300.0);
+class _PriceRangeSelectorState extends ConsumerState<PriceRangeSelector> {
+  late SfRangeValues _values = SfRangeValues(
+      ref.read(filterControllerProvider).minPrice,
+      ref.read(filterControllerProvider).maxPrice);
 
   @override
   Widget build(BuildContext context) {
