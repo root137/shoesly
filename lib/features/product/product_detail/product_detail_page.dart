@@ -9,6 +9,7 @@ import 'package:shoesly/core/themes/app_colors.dart';
 import 'package:shoesly/core/widgets/shoesly_appbar.dart';
 import 'package:shoesly/core/widgets/shoesly_elevated_button.dart';
 import 'package:shoesly/core/widgets/shoesly_icon_button.dart';
+import 'package:shoesly/features/brand/controller/brand_controller.dart';
 import 'package:shoesly/features/product/core/model/product.dart';
 import 'package:shoesly/features/product/product_detail/widgets/add_to_cart_bottom_sheet.dart';
 import 'package:shoesly/features/product/product_detail/widgets/product_image_slider.dart';
@@ -185,7 +186,7 @@ class ProductDetailPage extends ConsumerWidget {
               child: ShoeslyElevatedButton(
                 text: s_addToCart,
                 onPressed: () {
-                  _showAddToCartBottomSheet(context);
+                  _showAddToCartBottomSheet(context, ref);
                 },
               ),
             )
@@ -195,7 +196,7 @@ class ProductDetailPage extends ConsumerWidget {
     );
   }
 
-  void _showAddToCartBottomSheet(BuildContext context) {
+  void _showAddToCartBottomSheet(BuildContext context, WidgetRef ref) {
     showModalBottomSheet(
       isScrollControlled: true,
       context: context,
@@ -206,7 +207,19 @@ class ProductDetailPage extends ConsumerWidget {
         ),
       ),
       builder: (context) {
-        return const AddToCartBottomSheet();
+        return AddToCartBottomSheet(
+          productName: product.name,
+          // TODO: Provide selected image url, size and color
+          productImageUrl: product.imageUrls.first,
+          productSize: product.sizes.first,
+          productColor: product.colors.first,
+          productPrice: product.price,
+          brandName: ref
+                  .read(brandControllerProvider.notifier)
+                  .getBrandById(product.brandId)
+                  ?.name ??
+              '-',
+        );
       },
     );
   }

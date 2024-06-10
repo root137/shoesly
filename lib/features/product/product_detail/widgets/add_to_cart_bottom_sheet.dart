@@ -6,14 +6,39 @@ import 'package:shoesly/core/resources/strings.dart';
 import 'package:shoesly/core/themes/app_colors.dart';
 import 'package:shoesly/core/widgets/shoesly_elevated_button.dart';
 import 'package:shoesly/core/widgets/shoesly_icon_button.dart';
+import 'package:shoesly/features/cart/controller/cart_controller.dart';
+import 'package:shoesly/features/cart/model/cart.dart';
 import 'package:shoesly/features/product/product_detail/widgets/cart_success_bottom_sheet.dart';
 import 'package:shoesly/features/product/product_detail/widgets/quantity_selector.dart';
+import 'package:uuid/uuid.dart';
 
-class AddToCartBottomSheet extends ConsumerWidget {
-  const AddToCartBottomSheet({super.key});
+class AddToCartBottomSheet extends ConsumerStatefulWidget {
+  const AddToCartBottomSheet({
+    required this.productName,
+    required this.productImageUrl,
+    required this.brandName,
+    required this.productColor,
+    required this.productSize,
+    required this.productPrice,
+    super.key,
+  });
+  final String productName;
+  final String productImageUrl;
+  final String brandName;
+  final String productColor;
+  final double productSize;
+  final double productPrice;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<AddToCartBottomSheet> createState() =>
+      _AddToCartBottomSheetState();
+}
+
+class _AddToCartBottomSheetState extends ConsumerState<AddToCartBottomSheet> {
+  int selectedQuantity = 1;
+
+  @override
+  Widget build(BuildContext context) {
     return Wrap(
       children: [
         Container(
@@ -49,7 +74,13 @@ class AddToCartBottomSheet extends ConsumerWidget {
               const SizedBox(
                 height: 30,
               ),
-              const QuantitySelector(),
+              QuantitySelector(
+                onQuantityChanged: (quantity) {
+                  setState(() {
+                    selectedQuantity = quantity;
+                  });
+                },
+              ),
               const SizedBox(
                 height: 30,
               ),
@@ -70,7 +101,7 @@ class AddToCartBottomSheet extends ConsumerWidget {
                         ),
                         const SizedBox(height: 10),
                         Text(
-                          '\$100',
+                          '\$${widget.productPrice * selectedQuantity}',
                           style: Theme.of(context).textTheme.headlineLarge,
                         ),
                       ],
@@ -79,9 +110,30 @@ class AddToCartBottomSheet extends ConsumerWidget {
                   Expanded(
                     child: ShoeslyElevatedButton(
                       text: s_addToCart,
-                      onPressed: () {
-                        context.pop();
-                        _showCartSuccessBottomSheet(context);
+                      isLoading: ref.watch(cartControllerProvider).isLoading,
+                      onPressed: () async {
+                        // Add to cart
+                        ref
+                            .read(cartControllerProvider.notifier)
+                            .addToCart(
+                              Cart(
+                                id: const Uuid().v4(),
+                                productName: widget.productName,
+                                productImageUrl: widget.productImageUrl,
+                                brandName: widget.brandName,
+                                productColor: widget.productColor,
+                                productSize: widget.productSize,
+                                productPrice: widget.productPrice,
+                                quantity: selectedQuantity,
+                              ),
+                            )
+                            .then((value) {
+                          // Pop the sheet
+                          context.pop();
+                          _showCartSuccessBottomSheet(context);
+                        }).catchError((error) {
+                          debugPrint('Error: $error ');
+                        });
                       },
                     ),
                   )
@@ -97,7 +149,6 @@ class AddToCartBottomSheet extends ConsumerWidget {
   void _showCartSuccessBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
-      isScrollControlled: true,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),

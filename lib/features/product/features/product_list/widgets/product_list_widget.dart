@@ -41,7 +41,7 @@ class ProductListWidget extends ConsumerWidget {
                 return ProductItem(
                   product: products[index],
                   onPressed: () {
-                    context.goNamed(
+                    context.pushNamed(
                       Routes.productDetailPage.name,
                       extra: products[index],
                     );
