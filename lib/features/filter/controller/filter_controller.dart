@@ -28,6 +28,15 @@ class FilterNotifier extends StateNotifier<FilterArgs> {
     );
   }
 
+  bool anyFilterApplied() {
+    return state.brandId != null ||
+        state.minPrice != null ||
+        state.maxPrice != null ||
+        state.sortBy != null ||
+        state.sortByGender != null ||
+        state.sortByColor != null;
+  }
+
   void clearFilter() {
     state = FilterArgs.initial();
   }

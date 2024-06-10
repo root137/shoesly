@@ -9,6 +9,7 @@ import 'package:shoesly/core/widgets/shoesly_appbar.dart';
 import 'package:shoesly/core/widgets/shoesly_elevated_button.dart';
 import 'package:shoesly/core/widgets/shoesly_icon_button.dart';
 import 'package:shoesly/features/brand/brands_list_widget.dart';
+import 'package:shoesly/features/filter/controller/filter_controller.dart';
 import 'package:shoesly/features/product/features/product_list/controller/product_list_controller.dart';
 import 'package:shoesly/features/product/features/product_list/widgets/product_list_widget.dart';
 
@@ -63,8 +64,10 @@ class _ProductListPageState extends ConsumerState<ProductListPage> {
       floatingActionButton: ShoeslyElevatedButton(
         height: 40,
         width: 150,
-        icon: const ShoeslyIconButton(
+        icon: ShoeslyIconButton(
           size: 20,
+          hasNotifiable:
+              ref.watch(filterControllerProvider.notifier).anyFilterApplied(),
           iconColor: COLOR_WHITE,
           assetImagePath: a_filter,
         ),

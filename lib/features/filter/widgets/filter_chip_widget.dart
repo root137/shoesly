@@ -11,7 +11,7 @@ class FilterChipWidget extends StatefulWidget {
   final String? label;
 
   /// callback returs the selected value
-  final void Function(String)? selectedValue;
+  final Function(String)? selectedValue;
 
   @override
   State<FilterChipWidget> createState() => _FilterChipWidgetState();
@@ -28,7 +28,9 @@ class _FilterChipWidgetState extends State<FilterChipWidget> {
         onTap: () {
           setState(() {
             selected = !selected;
-            widget.selectedValue?.call(widget.label ?? '');
+            if (selected) {
+              widget.selectedValue?.call(widget.label ?? '');
+            }
           });
         },
         child: Chip(

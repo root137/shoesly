@@ -18,7 +18,7 @@ class FilterArgs {
   });
 
   factory FilterArgs.initial() {
-    return FilterArgs();
+    return FilterArgs(minPrice: 30, maxPrice: 300);
   }
 
   FilterArgs copyWith({
