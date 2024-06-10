@@ -4,26 +4,64 @@ import 'package:shoesly/core/resources/strings.dart';
 import 'package:shoesly/core/themes/app_colors.dart';
 import 'package:shoesly/core/widgets/shoesly_appbar.dart';
 import 'package:shoesly/core/widgets/shoesly_elevated_button.dart';
+import 'package:shoesly/features/cart/controller/cart_controller.dart';
 import 'package:shoesly/features/cart/widget/cart_item_widget.dart';
 
-class CartPage extends ConsumerWidget {
+class CartPage extends ConsumerStatefulWidget {
   const CartPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<CartPage> createState() => _CartPageState();
+}
+
+class _CartPageState extends ConsumerState<CartPage> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      ref.read(cartControllerProvider.notifier).fetchCartItems();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final cartAsync = ref.watch(cartControllerProvider);
+    final double totalPrice = cartAsync.value?.totalPrice ?? 0;
     return Scaffold(
-      appBar: const ShoeslyAppbar(
+      appBar: ShoeslyAppbar(
+        backgroundColor: COLOR_PRIMARY_100.withOpacity(0.4),
         title: s_cart,
         centreTitle: true,
       ),
-      body: Expanded(
-        child: Container(
-          height: double.infinity,
-          width: double.infinity,
-          color: COLOR_PRIMARY_100.withOpacity(0.4),
-          child: const SingleChildScrollView(
-            child: CartItemWidget(),
-          ),
+      body: cartAsync.when(
+        data: (cartState) {
+          if (cartState.cartItems.isEmpty) {
+            return const Center(
+              child: Text('No Items in Cart'),
+            );
+          }
+          return ColoredBox(
+            color: COLOR_PRIMARY_100.withOpacity(0.4),
+            child: ListView.builder(
+              itemBuilder: (_, index) {
+                return CartItemWidget(
+                  cart: cartState.cartItems[index],
+                  onQuantityChanged: (itemPrice) {
+                    ref
+                        .read(cartControllerProvider.notifier)
+                        .updateTotalPrice(itemPrice);
+                  },
+                );
+              },
+              itemCount: cartState.cartItems.length,
+            ),
+          );
+        },
+        error: (error, _) => Center(
+          child: Text(error.toString()),
+        ),
+        loading: () => const Center(
+          child: CircularProgressIndicator.adaptive(),
         ),
       ),
       bottomNavigationBar: Container(
@@ -51,7 +89,7 @@ class CartPage extends ConsumerWidget {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    '\$300',
+                    '\$${totalPrice.toStringAsFixed(2)}',
                     style: Theme.of(context).textTheme.headlineLarge,
                   ),
                 ],

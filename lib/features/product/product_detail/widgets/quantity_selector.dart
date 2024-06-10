@@ -7,7 +7,9 @@ import 'package:shoesly/core/themes/app_colors.dart';
 import 'package:shoesly/core/widgets/shoesly_icon_button.dart';
 
 class QuantitySelector extends StatefulWidget {
-  const QuantitySelector({super.key});
+  const QuantitySelector({this.onQuantityChanged, super.key});
+
+  final ValueSetter<int>? onQuantityChanged;
 
   @override
   _QuantitySelectorState createState() => _QuantitySelectorState();
@@ -28,6 +30,7 @@ class _QuantitySelectorState extends State<QuantitySelector> {
       _quantity++;
       _controller.text = _quantity.toString();
     });
+    widget.onQuantityChanged?.call(_quantity);
   }
 
   void _decrementQuantity() {
@@ -36,6 +39,7 @@ class _QuantitySelectorState extends State<QuantitySelector> {
         _quantity--;
         _controller.text = _quantity.toString();
       });
+      widget.onQuantityChanged?.call(_quantity);
     }
   }
 
@@ -74,6 +78,7 @@ class _QuantitySelectorState extends State<QuantitySelector> {
                     if (_quantity < 1) _quantity = 1;
                     _controller.text = _quantity.toString();
                   });
+                  widget.onQuantityChanged?.call(_quantity);
                 },
               ),
             ),

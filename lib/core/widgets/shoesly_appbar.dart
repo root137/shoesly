@@ -45,8 +45,11 @@ class ShoeslyAppbar extends StatelessWidget implements PreferredSizeWidget {
       title: title != null
           ? Text(
               title!,
-              style:
-                  titleTextStyle ?? Theme.of(context).textTheme.headlineMedium,
+              style: titleTextStyle ??
+                  Theme.of(context)
+                      .textTheme
+                      .headlineMedium
+                      ?.copyWith(fontWeight: FontWeight.w600),
             )
           : null,
       actions: actions != null ? [actions!] : null,
