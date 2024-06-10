@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shoesly/core/resources/strings.dart';
+import 'package:shoesly/core/router/routes.dart';
 import 'package:shoesly/core/themes/app_colors.dart';
 import 'package:shoesly/core/widgets/shoesly_appbar.dart';
 import 'package:shoesly/core/widgets/shoesly_elevated_button.dart';
@@ -98,7 +100,11 @@ class _CartPageState extends ConsumerState<CartPage> {
             Expanded(
               child: ShoeslyElevatedButton(
                 text: s_checkOut,
-                onPressed: () {},
+                onPressed: () {
+                  context.pushNamed(
+                    Routes.orderPage.name,
+                  );
+                },
               ),
             )
           ],

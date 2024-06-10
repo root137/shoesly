@@ -26,9 +26,11 @@ class CartItemWidget extends ConsumerStatefulWidget {
 class _CartItemWidgetState extends ConsumerState<CartItemWidget> {
   late final Cart _cart = widget.cart;
   late int _quantity = _cart.quantity;
+
   @override
   Widget build(BuildContext context) {
     const height10 = SizedBox(height: 10);
+
     return Dismissible(
       key: UniqueKey(),
       onDismissed: (_) {
@@ -36,7 +38,9 @@ class _CartItemWidgetState extends ConsumerState<CartItemWidget> {
       },
       direction: DismissDirection.endToStart,
       background: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 20,
+        ),
         alignment: Alignment.centerRight,
         decoration: const BoxDecoration(
           color: COLOR_ERROR,
@@ -47,7 +51,10 @@ class _CartItemWidgetState extends ConsumerState<CartItemWidget> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 12,
+        ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -78,13 +85,17 @@ class _CartItemWidgetState extends ConsumerState<CartItemWidget> {
                   ),
                   Row(
                     children: [
-                      Text(
-                        '\$${_cart.productPrice}',
-                        style: Theme.of(context).textTheme.headlineLarge,
-                      ),
+                      Text('\$${_cart.productPrice.toStringAsFixed(2)}',
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineMedium
+                              ?.copyWith(
+                                fontWeight: FontWeight.w600,
+                              )),
                       const Spacer(),
                       ShoeslyIconButton(
                         assetImagePath: a_minus_circle,
+                        iconColor: _quantity == 1 ? COLOR_PRIMARY_300 : null,
                         onPressed: () => _decreaseQuantity(),
                       ),
                       height10,
@@ -120,7 +131,7 @@ class _CartItemWidgetState extends ConsumerState<CartItemWidget> {
       setState(() {
         _quantity--;
       });
+      widget.onQuantityChanged?.call(-_cart.productPrice);
     }
-    widget.onQuantityChanged?.call(_cart.productPrice);
   }
 }
