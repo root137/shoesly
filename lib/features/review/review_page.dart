@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shoesly/core/resources/strings.dart';
 import 'package:shoesly/core/widgets/shoesly_appbar.dart';
 import 'package:shoesly/features/review/controller/review_controller.dart';
+import 'package:shoesly/features/review/widgets/rating_list_widget.dart';
 import 'package:shoesly/features/review/widgets/user_review_widget.dart';
 import 'package:shoesly/features/user/controller/user_controller.dart';
 
@@ -66,32 +67,39 @@ class _ReviewpageState extends ConsumerState<ReviewPage> {
           ),
         ),
       ),
-      body: reviewAsync.when(
-        data: (reviews) {
-          /// get user details of that id review
-
-          return ListView.builder(
-            itemBuilder: (context, index) {
-              final review = reviews[index];
-              debugPrint('Review: ${review.toJson()}');
-              return UserReviewWidget(
-                name: 'John Doe',
-                date: review.createdAt,
-                description: review.description,
-                rating: review.rating,
+      body: Column(
+        children: [
+          const RatingListWidget(),
+          reviewAsync.when(
+            data: (reviews) {
+              return Expanded(
+                child: ListView.builder(
+                  itemBuilder: (context, index) {
+                    final review = reviews[index];
+                    final user = ref
+                        .read(userListNotifierProvider.notifier)
+                        .getUserById(review.userId);
+                    return UserReviewWidget(
+                      name: user?.name ?? '',
+                      date: review.createdAt,
+                      description: review.description,
+                      rating: review.rating,
+                    );
+                  },
+                  itemCount: reviews.length,
+                ),
               );
             },
-            itemCount: reviews.length,
-          );
-        },
-        error: (_, __) {
-          return const Text('Error');
-        },
-        loading: () {
-          return const Center(
-            child: CircularProgressIndicator.adaptive(),
-          );
-        },
+            error: (_, __) {
+              return const Text('Error');
+            },
+            loading: () {
+              return const Center(
+                child: CircularProgressIndicator.adaptive(),
+              );
+            },
+          ),
+        ],
       ),
     );
   }

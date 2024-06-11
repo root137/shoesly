@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shoesly/features/user/model/user.dart';
 import 'package:shoesly/features/user/service/user_service.dart';
+import 'package:collection/collection.dart';
 
 final userListNotifierProvider =
     StateNotifierProvider<UserListNotifier, AsyncValue<List<User>>>((ref) {
@@ -21,11 +21,9 @@ class UserListNotifier extends StateNotifier<AsyncValue<List<User>>> {
     try {
       final List<User> users = await ref.read(userServiceProvider).fetchtodo();
 
-      debugPrint('UserListNotifier: fetchUsers: $users');
       state = AsyncValue.data(
         users,
       );
-      debugPrint('UserListNotifier: fetchUsers: $users');
     } catch (error) {
       state = AsyncError(
         error,
@@ -34,8 +32,9 @@ class UserListNotifier extends StateNotifier<AsyncValue<List<User>>> {
     }
   }
 
-  // User? getUserById(String id) {
-  //   final List<User>? users = state.value;
-  //   return users?.firstWhereOrNull((user) => user.id == id);
-  // }
+  /// get user by id
+  User? getUserById(String id) {
+    final List<User>? users = state.value;
+    return users?.firstWhereOrNull((user) => user.id == id);
+  }
 }

@@ -49,11 +49,11 @@ class _TopReviewWidgetState extends ConsumerState<TopReviewWidget> {
           data: (reviews) {
             return Column(
               children: reviews.map((review) {
-                // final user = ref
-                //     .read(userListNotifierProvider.notifier)
-                //     .getUserById(review.userId);
+                final user = ref
+                    .read(userListNotifierProvider.notifier)
+                    .getUserById(review.userId);
                 return UserReviewWidget(
-                  name: 'Hello',
+                  name: user?.name ?? '',
                   description: review.description,
                   date: review.createdAt,
                   rating: review.rating,
