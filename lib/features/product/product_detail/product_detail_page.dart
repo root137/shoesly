@@ -14,6 +14,8 @@ import 'package:shoesly/features/product/core/model/product.dart';
 import 'package:shoesly/features/product/product_detail/widgets/add_to_cart_bottom_sheet.dart';
 import 'package:shoesly/features/product/product_detail/widgets/product_image_slider.dart';
 import 'package:shoesly/features/product/product_detail/widgets/size_widget.dart';
+import 'package:shoesly/features/product/product_detail/widgets/top_review_widget.dart';
+import 'package:shoesly/features/user/user_list_page.dart';
 
 class ProductDetailPage extends ConsumerWidget {
   const ProductDetailPage({
@@ -111,7 +113,9 @@ class ProductDetailPage extends ConsumerWidget {
               ),
               Text(
                 s_size,
-                style: Theme.of(context).textTheme.headlineLarge,
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
               const SizedBox(height: 10),
               SingleChildScrollView(
@@ -132,7 +136,9 @@ class ProductDetailPage extends ConsumerWidget {
               const SizedBox(height: 30),
               Text(
                 s_description,
-                style: Theme.of(context).textTheme.headlineLarge,
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
               const SizedBox(height: 10),
               Text(
@@ -142,11 +148,10 @@ class ProductDetailPage extends ConsumerWidget {
                     ),
               ),
               const SizedBox(height: 30),
-              Text(
-                '$s_review (10)',
-                style: Theme.of(context).textTheme.headlineMedium,
+              // const UserListPage(),
+              TopReviewWidget(
+                product: product,
               ),
-              const SizedBox(height: 30),
             ],
           ),
         ),

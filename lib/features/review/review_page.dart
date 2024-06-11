@@ -1,19 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shoesly/core/resources/strings.dart';
-import 'package:shoesly/core/themes/app_colors.dart';
 import 'package:shoesly/core/widgets/shoesly_appbar.dart';
+import 'package:shoesly/features/review/controller/review_controller.dart';
+import 'package:shoesly/features/review/widgets/user_review_widget.dart';
+import 'package:shoesly/features/user/controller/user_controller.dart';
 
-class ReviewPage extends ConsumerWidget {
-  const ReviewPage({super.key});
+class ReviewPage extends ConsumerStatefulWidget {
+  const ReviewPage({
+    this.productId,
+    super.key,
+  });
+
+  final String? productId;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _ReviewpageState();
+}
+
+class _ReviewpageState extends ConsumerState<ReviewPage> {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      ref
+          .read(reviewListNotifierProvider.notifier)
+          .fetchReviews(widget.productId);
+
+      ref.read(userListNotifierProvider.notifier).fetchUsers();
+    });
+
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final reviewAsync = ref.watch(reviewListNotifierProvider);
+    final reviewCount = reviewAsync.maybeWhen(
+      data: (reviews) => reviews.length,
+      orElse: () => 0,
+    );
+
     return Scaffold(
       appBar: ShoeslyAppbar(
         centreTitle: true,
-        title: '$s_review ${"(${hashCode.toRadixString(8).toUpperCase()})"}',
+        title: '$s_review ${"(${reviewCount.toString()})"}',
         actions: Padding(
           padding: const EdgeInsets.only(right: 16.0),
           child: Row(
@@ -28,79 +58,48 @@ class ReviewPage extends ConsumerWidget {
               ),
               Text(
                 '4.5',
-                style: Theme.of(context).textTheme.headlineMedium,
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
             ],
           ),
         ),
       ),
-      body: const UserReviewWidget(),
-    );
-  }
-}
+      body: reviewAsync.when(
+        data: (reviews) {
+          /// get user details of that id review
 
-class UserReviewWidget extends StatelessWidget {
-  const UserReviewWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    const imageUrl =
-        'https://images.unsplash.com/photo-1493106819501-66d381c466f1?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const CircleAvatar(
-            radius: 20,
-            backgroundImage: NetworkImage(
-              imageUrl,
-            ),
-          ),
-          const SizedBox(
-            width: 15,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Nolan Carder',
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              RatingBar.builder(
-                unratedColor: COLOR_PRIMARY_100,
-                initialRating: 3.5,
-                minRating: 1,
-                direction: Axis.horizontal,
-                allowHalfRating: true,
-                itemCount: 5,
-                itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                itemBuilder: (context, _) => const Icon(
-                  Icons.star_rounded,
-                  size: 10,
-                  color: Colors.amber,
-                ),
-                onRatingUpdate: (rating) {},
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                'Description of the review',
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-            ],
-          ),
-          const Spacer(),
-          Text(
-            '1 day ago',
-            style: Theme.of(context).textTheme.bodySmall,
-          )
-        ],
+          return ListView.builder(
+            itemBuilder: (context, index) {
+              final review = reviews[index];
+              debugPrint('Review: ${review.toJson()}');
+              return UserReviewWidget(
+                name: 'John Doe',
+                date: review.createdAt,
+                description: review.description,
+                rating: review.rating,
+              );
+            },
+            itemCount: reviews.length,
+          );
+        },
+        error: (_, __) {
+          return const Text('Error');
+        },
+        loading: () {
+          return const Center(
+            child: CircularProgressIndicator.adaptive(),
+          );
+        },
       ),
     );
+  }
+
+  /// method to calculate average rating
+  double calculateAverageRating(List<double> ratings) {
+    final totalRating =
+        ratings.fold(0.0, (previousValue, element) => previousValue + element);
+    return totalRating / ratings.length;
   }
 }

@@ -14,8 +14,6 @@ class ShoeslyNetworkImage extends StatelessWidget {
         ? Image.network(
             imageUrl ?? '',
           )
-        : Image.asset(
-            'assets/images/placeholder.png',
-          );
+        : const Icon(Icons.error);
   }
 }

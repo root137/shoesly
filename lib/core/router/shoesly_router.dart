@@ -7,8 +7,8 @@ import 'package:shoesly/features/cart/cart_page.dart';
 import 'package:shoesly/features/filter/filter_page.dart';
 import 'package:shoesly/features/order/order_summary_page.dart';
 import 'package:shoesly/features/product/core/model/product.dart';
-import 'package:shoesly/features/product/product_detail/product_detail_page.dart';
 import 'package:shoesly/features/product/features/product_list/product_list_page.dart';
+import 'package:shoesly/features/product/product_detail/product_detail_page.dart';
 import 'package:shoesly/features/review/review_page.dart';
 
 final rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -42,7 +42,12 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: Routes.reviewPage.path,
         name: Routes.reviewPage.name,
-        builder: (context, state) => const ReviewPage(),
+        builder: (context, state) {
+          final String productId = state.extra as String;
+          return ReviewPage(
+            productId: productId,
+          );
+        },
       ),
       GoRoute(
         path: Routes.cartPage.path,
