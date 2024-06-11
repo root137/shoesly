@@ -39,7 +39,7 @@ class _TopReviewWidgetState extends ConsumerState<TopReviewWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '$s_review (10)',
+          '$s_review (13)',
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
@@ -55,6 +55,7 @@ class _TopReviewWidgetState extends ConsumerState<TopReviewWidget> {
                 return UserReviewWidget(
                   name: user?.name ?? '',
                   description: review.description,
+                  imageUrl: user?.imageUrl,
                   date: review.createdAt,
                   rating: review.rating,
                 );
