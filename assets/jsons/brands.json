@@ -1,144 +1,62 @@
 [
   {
     "id": "",
-    "brandId": "",
-    "reviewId": "",
-    "name": "Air Jordan 1 Tie-Dye",
-    "price": 149.0,
-    "imageUrls": [
-      "https://firebasestorage.googleapis.com/v0/b/shoesly-8d876.appspot.com/o/products%2Faj1_tiedye.png?alt=media&token=10fac945-6e91-4226-82c0-fdc14734ceba"
-    ],
-    "sizes": [38, 39, 40, 40.5, 41, 42.5, 43],
-    "description": "Step into a swirl of style with the Air Jordan 1 'Tie-Dye.' These sneakers offer a fresh twist on a classic silhouette, featuring a vibrant tie-dye print that stands out in any crowd. Crafted with premium materials, these shoes ensure comfort and durability while maintaining the iconic Air Jordan quality. The bold, unique pattern of blue and white tie-dye gives this edition a playful yet edgy aesthetic, perfect for those who want to express their individuality. Whether you're hitting the streets or just chilling, these sneakers are designed to make a statement. Embrace the blend of tradition and trend with the Air Jordan 1 'Tie-Dye' – where style meets comfort in every step.",
-    "colors": ["Blue", "White"],
-    "gender": "Unisex",
-    "averageRating": 0.0,
-    "reviewCount": 0
+    "name": "John Doe",
+    "imageUrl": "https://randomuser.me/api/portraits/men/1.jpg"
   },
   {
     "id": "",
-    "brandId": "",
-    "reviewId": "",
-    "name": "Jordan 1 Mid Light Smoke Grey",
-    "price": 120.0,
-    "imageUrls": [],
-    "sizes": [36, 37, 38.5, 39],
-    "description": "Elevate your style with the Jordan 1 Mid Light Smoke Grey. These mid-top sneakers blend classic Jordan design with a modern color palette, featuring a sleek mix of light grey and white. The durable leather upper ensures longevity, while the iconic Air-Sole unit provides timeless comfort. Perfect for any occasion, these sneakers offer a versatile look that complements both casual and sporty outfits. Step into confidence and comfort with the Jordan 1 Mid Light Smoke Grey, and let your shoes reflect your refined taste and active lifestyle.",
-    "colors": ["Light Grey", "White"],
-    "gender": "Female",
-    "averageRating": 0.0,
-    "reviewCount": 0
+    "name": "Jane Smith",
+    "imageUrl": "https://randomuser.me/api/portraits/women/2.jpg"
   },
   {
     "id": "",
-    "brandId": "",
-    "reviewId": "",
-    "name": "Air Jordan 1 Retro High 'Pine Green 2.0'",
-    "price": 149.0,
-    "imageUrls": [],
-    "sizes": [40, 41, 42.5, 43.5],
-    "description": "Unleash bold confidence with the Air Jordan 1 Retro High 'Pine Green 2.0'. This iteration of the iconic silhouette features deep pine green and black leather panels that promise to make a statement wherever you go. Crafted for durability and comfort, this model includes the classic Air-Sole cushioning that has made the Jordan brand a staple in footwear. The precise craftsmanship and high-quality materials ensure these sneakers stand the test of time. Tailored for the discerning male, they offer both supreme style and functional excellence.",
-    "colors": ["Pine Green", "Black"],
-    "gender": "Male",
-    "averageRating": 0.0,
-    "reviewCount": 0
+    "name": "Alice Johnson",
+    "imageUrl": "https://randomuser.me/api/portraits/women/3.jpg"
   },
   {
     "id": "",
-    "brandId": "",
-    "reviewId": "",
-    "name": "Air Jordan 1 Retro High OG 'Light Smoke Grey'",
-    "price": 149.0,
-    "imageUrls": [],
-    "sizes": [36, 38, 39, 40, 41, 43, 46],
-    "description": "The Air Jordan 1 Retro High OG 'Light Smoke Grey' offers a timeless yet modern twist on a classic silhouette. This stylish iteration features a blend of light smoke grey and white with subtle black accents, creating a versatile and striking look. The high-quality leather upper provides durability and comfort, while the encapsulated Air-Sole unit ensures responsive cushioning. Ideal for sneaker enthusiasts and casual wearers alike, this model captures the essence of Jordan heritage with contemporary flair.",
-    "colors": ["Light Smoke Grey", "White", "Black"],
-    "gender": "Unisex",
-    "averageRating": 0.0,
-    "reviewCount": 0
+    "name": "Bob Brown",
+    "imageUrl": "https://randomuser.me/api/portraits/men/4.jpg"
   },
   {
     "id": "",
-    "brandId": "",
-    "reviewId": "",
-    "name": "Nike Air Jordan 1 Retro High OG 'Black White Royal Toe Blue'",
-    "price": 149.0,
-    "imageUrls": [],
-    "sizes": [40, 42, 43, 44],
-    "description": "Capture the essence of basketball heritage with the Nike Air Jordan 1 Retro High OG 'Black White Royal Toe Blue'. This exclusive colorway features a striking combination of black, white, and royal blue, crafted with premium leather for lasting durability and superior comfort. The design maintains the classic elements of the Air Jordan 1, including the iconic high-top silhouette and the Air-Sole unit for lightweight cushioning. Perfect for collectors and fashion-forward individuals alike, these sneakers offer both a bold style statement and functional sportswear excellence.",
-    "colors": ["Black", "White", "Royal Blue"],
-    "gender": "Male",
-    "averageRating": 0.0,
-    "reviewCount": 0
+    "name": "Emily Davis",
+    "imageUrl": "https://randomuser.me/api/portraits/women/5.jpg"
   },
   {
     "id": "",
-    "brandId": "",
-    "reviewId": "",
-    "name": "Adidas Solar Boost Green Yellow",
-    "price": 130.0,
-    "imageUrls": [],
-    "sizes": [38, 39, 40, 42, 44],
-    "description": "Energize every step with the Adidas Solar Boost in Green and Solar Yellow. This dynamic running shoe is designed to offer unbeatable comfort and energy return, making it ideal for both long runs and quick sprints. Featuring a responsive Boost midsole and a breathable mesh upper in vibrant green with striking solar yellow accents, these shoes not only look good but also provide the support needed for peak performance. Tailored for athletes who demand the best, the Adidas Solar Boost will help you push your limits.",
-    "colors": ["Green", "Solar Yellow"],
-    "gender": "Unisex",
-    "averageRating": 0.0,
-    "reviewCount": 0
+    "name": "Michael Wilson",
+    "imageUrl": "https://randomuser.me/api/portraits/men/6.jpg"
   },
   {
     "id": "",
-    "brandId": "",
-    "reviewId": "",
-    "name": "Air Jordan 11 Low 'White Bred'",
-    "price": 170.0,
-    "imageUrls": [],
-    "sizes": [40, 40.5, 42, 42.5, 44, 44.5],
-    "description": "Experience a sleek blend of legacy and style with the Air Jordan 11 Low 'White Bred'. This elegant version of the iconic Air Jordan 11 features a luxurious white upper complemented by the classic Bred colorway accents. The patent leather shines around the base, giving these sneakers a polished look, while the durable rubber outsole ensures traction and longevity. Perfect for everyday wear or special occasions, these shoes bring a touch of class to any outfit and are a must-have for Jordan enthusiasts and sneaker collectors alike.",
-    "colors": ["White", "Black", "Red"],
-    "gender": "Male",
-    "averageRating": 0.0,
-    "reviewCount": 0
+    "name": "Jessica Martinez",
+    "imageUrl": "https://randomuser.me/api/portraits/women/7.jpg"
   },
   {
     "id": "",
-    "brandId": "",
-    "reviewId": "",
-    "name": "Adidas Yeezy 700 MNVN 'Bone'",
-    "price": 220.0,
-    "imageUrls": [],
-    "sizes": [40, 40.5, 41, 42, 42.5, 43, 43.5, 44],
-    "description": "Elevate your sneaker collection with the Adidas Yeezy 700 MNVN 'Bone'. This sleek colorway combines a muted bone-white polyester upper with reflective details to create a sophisticated yet eye-catching look. The oversized 700 logo stands out with a subtle contrast, enhancing the shoe's modern design. Equipped with a full-length Boost midsole, this model offers comfort that lasts all day, making it perfect for both casual wear and special occasions. The Yeezy 700 MNVN 'Bone' delivers a clean, understated style that complements any outfit.",
-    "colors": ["Bone White", "Light Grey"],
-    "gender": "Unisex",
-    "averageRating": 0.0,
-    "reviewCount": 0
+    "name": "William Anderson",
+    "imageUrl": "https://randomuser.me/api/portraits/men/8.jpg"
   },
   {
     "id": "",
-    "brandId": "",
-    "reviewId": "",
-    "name": "Air Jordan Retro 'Chicago Red'",
-    "price": 190.0,
-    "imageUrls": [],
-    "sizes": [40, 40.5, 41, 42, 42.5, 43, 43.5, 44],
-    "description": "Rediscover a classic with the Air Jordan Retro 'Chicago Red'. This iconic sneaker pays homage to Michael Jordan's legacy with its vibrant red and deep black color scheme, reminiscent of his days with the Chicago Bulls. The high-quality leather upper and cushioned sole ensure both style and comfort, making these Jordans not just a piece of sports history, but a staple of modern footwear. Perfect for collectors and fashion-forward individuals alike, the 'Chicago Red' brings a piece of basketball heritage to your everyday style.",
-    "colors": ["Red", "Black"],
-    "gender": "Unisex",
-    "averageRating": 0.0,
-    "reviewCount": 0
+    "name": "Sophia Taylor",
+    "imageUrl": "https://randomuser.me/api/portraits/women/9.jpg"
   },
   {
     "id": "",
-    "brandId": "",
-    "reviewId": "",
-    "name": "Adidas Grand Court 2.0 Gray",
-    "price": 65.0,
-    "imageUrls": [],
-    "sizes": [40, 40.5, 41, 42, 42.5, 43, 43.5, 44],
-    "description": "The Adidas Grand Court 2.0 Gray is a modern take on retro tennis style, offering comfort and a sleek design for everyday wear. This version features a soft gray synthetic leather upper with classic three-stripe branding in a contrasting white. The Cloudfoam comfort sockliner and a smooth textile lining provide plush cushioning, ensuring all-day comfort. With its versatile look and timeless appeal, the Grand Court 2.0 is perfect for those who value simplicity and style in their footwear.",
-    "colors": ["Gray", "White"],
-    "gender": "Unisex",
-    "averageRating": 0.0,
-    "reviewCount": 0
+    "name": "James Thomas",
+    "imageUrl": "https://randomuser.me/api/portraits/men/10.jpg"
+  },
+  {
+    "id": "",
+    "name": "Olivia Garcia",
+    "imageUrl": "https://randomuser.me/api/portraits/women/11.jpg"
+  },
+  {
+    "id": "",
+    "name": "Daniel Rodriguez",
+    "imageUrl": "https://randomuser.me/api/portraits/men/12.jpg"
   }
 ]

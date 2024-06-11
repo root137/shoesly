@@ -18,7 +18,6 @@ class ShoeslyElevatedButton extends StatelessWidget {
   final Color? backgroundColor;
   final Color? foregroundColor;
 
-  /// TODO: Provide height and width by parent
   final double? height;
   final double? width;
   final VoidCallback? onPressed;

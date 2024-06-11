@@ -9,9 +9,6 @@ import 'package:shoesly/features/product/features/product_list/widgets/product_i
 class ProductListWidget extends ConsumerWidget {
   const ProductListWidget({super.key});
 
-  // TODO: Create generic error widget
-  // TODO: Create loader for each widget
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final productListAsync = ref.watch(productControllerProvider);
