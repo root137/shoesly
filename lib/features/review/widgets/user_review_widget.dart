@@ -41,11 +41,11 @@ class UserReviewWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.65,
+                width: MediaQuery.of(context).size.width * 0.68,
                 child: Row(
                   children: [
                     Text(
-                      name ?? 'hello',
+                      name ?? '',
                       style:
                           Theme.of(context).textTheme.headlineMedium?.copyWith(
                                 fontWeight: FontWeight.w600,

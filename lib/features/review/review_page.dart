@@ -83,6 +83,7 @@ class _ReviewpageState extends ConsumerState<ReviewPage> {
                       name: user?.name ?? '',
                       date: review.createdAt,
                       description: review.description,
+                      imageUrl: user?.imageUrl,
                       rating: review.rating,
                     );
                   },

@@ -31,12 +31,9 @@ class _RatingListWidgetState extends ConsumerState<RatingListWidget> {
       child: ListView.separated(
         padding: const EdgeInsets.only(left: 30, right: 30, top: 10),
         itemBuilder: (_, index) {
-          // Get the star rating from the list
           final ratingText = starRatings[index];
           return InkWell(
-            onTap: () {
-              // Handle tap on star rating
-            },
+            onTap: () {},
             child: Text(
               ratingText,
               style: Theme.of(context).textTheme.headlineLarge?.copyWith(
