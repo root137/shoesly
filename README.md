@@ -71,3 +71,5 @@ Implementing product filtering functionality using Firebase posed challenges due
 
 *Overcoming Strategy:*
 To address this challenge, I adopted a multi-step approach. Firstly, I optimized the data model by denormalizing certain data structures and pre-calculating aggregations to minimize the need for complex queries at runtime. Next, I utilized Firebase's querying capabilities, such as compound queries and array-contains, to efficiently filter products based on user-defined criteria. Additionally, I implemented client-side filtering using Riverpod to further refine and customize product filtering based on user interactions. By combining server-side and client-side filtering techniques, I achieved optimal performance and responsiveness in product filtering, ensuring a smooth user experience.
+
+https://www.loom.com/share/24a0f4e26f5a4ee8b4257a4009852bdb?sid=0f7e2dcb-80ff-4f50-b3af-277936435388
